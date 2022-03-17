@@ -1,0 +1,47 @@
+Arguments: 
+  /usr/local/Cellar/node@14/14.19.0/bin/node /usr/local/Cellar/yarn/1.22.17_2/libexec/bin/yarn.js install
+
+PATH: 
+  /usr/local/opt/node@14/bin:/usr/local/opt/mysql@5.6/bin:/Users/kamechan/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+Yarn version: 
+  1.22.17
+
+Node version: 
+  14.19.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/kamechan/projects/furima-37271/package.json: Unexpected token , in JSON at position 244
+      at JSON.parse (<anonymous>)
+      at /usr/local/Cellar/yarn/1.22.17_2/libexec/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/Cellar/yarn/1.22.17_2/libexec/lib/cli.js:310:30)
+      at /usr/local/Cellar/yarn/1.22.17_2/libexec/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "furima_37271",
+    "private": true,
+    "dependencies": {
+      "@rails/ujs": "^6.0.0-alpha",
+      "turbolinks": "^5.2.0",
+      "@rails/activestorage": "^6.0.0-alpha",
+      "@rails/actioncable": "^6.0.0-alpha"
+    },
+    "version": "0.1.0"
+  
+    },
+    "engines" : {
+      "node": "14.19.0"
+    }
+  
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
