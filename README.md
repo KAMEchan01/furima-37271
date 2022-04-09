@@ -1,6 +1,6 @@
 # DB設計
 
-## users table
+## Users 
 
 | Column             | Type   | Options                   |
 |--------------------|--------|---------------------------|
@@ -11,54 +11,60 @@
 | first_name         | string | null: false               |
 | last_name_kana     | string | null: false               | 
 | first_name_kana    | string | null: false               |  
-| birth_date         | string | null: false               | 
+| birth_date         | date   | null: false               | 
 
 ### Association
 has_many :items
-has_many :shipping_address
+has_many :orders
+has_many :comments
 
-
-## Shipping_address table
+##  Shipping_address
 
 | Column       | Type       | Options                        |
 |--------------|------------|--------------------------------|
-| user_id      | references | null: false, foreign_key: true |
-| postal_code  | integer    | null: false                    |
+| user         | references | null: false                    |
+| postal_code  | string     | null: false                    |
 | prefecture   | string     | null: false                    |
 | city         | string     | null: false                    |
 | address1     | string     | null: false                    |
 | address2     | string     |                                |
-| phone        | integer    | null: false                    |   
+| phone        | integer    | null: false                    |  
+| order        | references | null: false, foreign_key: true |
 
 ### Association
-belongs_to :user
+belongs_to :order
 
 
 ## Credit_card
 
 | Column       | Type       | Options                        |
 |--------------|------------|--------------------------------|
-| user_id      | references | null: false, foreign_key: true |
+| order        | references | null: false, foreign_key: true |
 | card_no      | integer    | null: false                    |
 
 ### Association
-belongs_to :user
+belongs_to :order
 
 ## Items
 
-| Column         | Type    | Options     |
-|----------------|---------|-------------|
-| image          | string  | null: false |
-| item_name      | string  | null: false |
-| item_info      | string  | null: false |
-| item_categories| string  | null: false |
-| item_status    | string  | null: false |
-| shipping_fee   | string  | null: false |
-| shipping_area  | integer | null: false |
-| handling_time  | integer | null: false |
+| Column                | Type       | Options     |
+|-----------------------|------------|-------------|
+| image                 | string     | null: false |
+| item_name             | string     | null: false |
+| item_info             | text       | null: false |
+| item_category_id      | integer    | null: false |
+| sale_status_id        | integer    | null: false |
+| shipping_fee_id       | integer    | null: false |
+| prefecture_id         | integer    | null: false |
+| scheduled_delivery_id | integer    | null: false |
+| price                 | integer    | null: false |
+| saller_user_id        | references | null: false |
+
 
 ### Association
+has_one :order
 belongs_to :user
+has_many :comments
 
 ## Comments
 
@@ -71,3 +77,16 @@ belongs_to :user
 ### Association
 belongs_to :user
 belongs_to :item
+
+## Orders
+
+| Column        | Type       | Options     |
+|---------------|------------|-------------|
+| buyer_user_id | references | null: false |
+| item_id       | references | null: false |
+
+### Association
+belongs_to :user
+belongs_to :item
+has_one :shipping_adress
+has_one :credit_card
