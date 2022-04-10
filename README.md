@@ -15,9 +15,9 @@
 
 
 ### Association
-has_many :items
-has_many :orders
-has_many :comments
+- has_many :items
+- has_many :orders
+- has_many :comments
 
 ##  ShippingAddresses
 
@@ -32,7 +32,7 @@ has_many :comments
 | order         | references | null: false, foreign_key: true |
 
 ### Association
-belongs_to :order
+- belongs_to :order
 
 
 ## Items
@@ -47,35 +47,34 @@ belongs_to :order
 | prefecture_id         | integer    | null: false                   |
 | scheduled_delivery_id | integer    | null: false                   |
 | price                 | integer    | null: false                   |
-| user_id               | references | null: false, foreign_key: true|
+| user                  | references | null: false, foreign_key: true|
 
 
 ### Association
-has_one :order
-belongs_to :user
-has_many :comments
+- has_one :order
+- belongs_to :user
+- has_many :comments
 
 ## Comments
 
-| Column  | Type       | Options     |
-|---------|------------|-------------|
-| user_id | references | null: false |
-| item_id | references | null: false |
-| text    | text       | null: false |
+| Column  | Type       | Options                       |
+|---------|------------|-------------------------------|
+| user    | references | null: false, foreign_key: true|
+| item    | references | null: false, foreign_key: true|
+| text    | text       | null: false                   |
 
 ### Association
-belongs_to :user
-belongs_to :item
+- belongs_to :user
+- belongs_to :item
 
 ## Orders
 
 | Column  | Type       | Options                       |
 |---------|------------|-------------------------------|
-| user_id | references | null: false                   |
-| item_id | references | null: false, foreign_key: true|
+| user    | references | null: false, foreign_key: true|
+| item    | references | null: false, foreign_key: true|
 
 ### Association
-belongs_to :user
-belongs_to :item
-has_one :shipping_adress
-has_one :credit_card
+- belongs_to :user
+- belongs_to :item
+- has_one :shipping_adress
