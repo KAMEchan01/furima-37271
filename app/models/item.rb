@@ -13,7 +13,6 @@ class Item < ApplicationRecord
   validates :shipping_fee_id,        presence: true
   validates :prefecture_id,          presence: true
   validates :scheduled_delivery_id,  presence: true
-  validates :user_id,                presence: true
   validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 } , presence: true
   
   
@@ -28,7 +27,7 @@ class Item < ApplicationRecord
   validates :item_category_id,       numericality: { other_than: 1 , message: "can't be blank"}
   validates :sale_status_id,         numericality: { other_than: 1 , message: "can't be blank"}
   validates :shipping_fee_id,        numericality: { other_than: 1 , message: "can't be blank"}
-  validates :prefecture_id,          numericality: { other_than: 1 , message: "can't be blank"}
+  validates :prefecture_id,          numericality: { other_than: 0 , message: "can't be blank"}
   validates :scheduled_delivery_id,  numericality: { other_than: 1 , message: "can't be blank"}
 
 end
