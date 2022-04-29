@@ -12,7 +12,7 @@ FactoryBot.define do
     price { Faker::Number.between(from: 300, to: 9_999_999) }
 
     after(:build) do |item|
-      item.image.attach(io: File.open('public/images/a.png'), filename: 'a.png')
+      item.image.attach(io: File.open('public/images/test-image.png'), filename: 'test-image.png')
     end
   end
 end
