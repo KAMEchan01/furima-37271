@@ -12,7 +12,8 @@ class Item < ApplicationRecord
   validates :shipping_fee_id,        presence: true
   validates :prefecture_id,          presence: true
   validates :scheduled_delivery_id,  presence: true
-  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, only_integer: true }, presence: true
+  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, only_integer: true },
+                    presence: true
 
   belongs_to :item_category
   belongs_to :sale_status
