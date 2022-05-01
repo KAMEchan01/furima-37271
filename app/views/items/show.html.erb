@@ -26,18 +26,16 @@
     </div>
 
    <% if user_signed_in? %>
-    <%# ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
     <% if current_user.id == @item.user_id %>
     <%= link_to "商品の編集", edit_item_path(@item), method: :get, class: "item-red-btn" %>
     <p class="or-text">or</p>
     <%= link_to "削除", item_path(@item), method: :delete, class:"item-destroy" %>
 
    <% else %>
-    <%# 商品が売れていない場合はこちらを表示しましょう %>
     <%= link_to "購入画面に進む", item_orders_path(@item) ,class:"item-red-btn"%>
      <% end%>
     <% end%>
-    <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
+    
     <div class="item-explain-box">
       <span><%= @item.item_info %></span>
     </div>
@@ -84,7 +82,7 @@
       </div>
     </div>
   </div>
-  <%# /商品の概要 %>
+
 
   <div class="comment-box">
     <form>
@@ -108,9 +106,8 @@
       後ろの商品 ＞
     </a>
   </div>
-  <%# 詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
+
   <a href="#" class="another-item"><%= @item.item_category.name %>をもっと見る</a>
-  <%# //詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
 </div>
 
 <%= render "shared/footer" %>
