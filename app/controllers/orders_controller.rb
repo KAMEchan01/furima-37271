@@ -26,9 +26,9 @@ class OrdersController < ApplicationController
     params.require(:order_address).permit(:postal_code, :prefecture_id, :city, :address1, :address2, :phone).merge(user_id: current_user.id, item_id: params[:item_id])
   end
 
-  def address_params
-    params.permit(:postal_code, :prefecture, :city, :address1, :address2, :phone ).merge(doder_id: @order.id)
-  end
+  #def address_params
+   # params.permit(:postal_code, :prefecture, :city, :address1, :address2, :phone ).merge(doder_id: @order.id)
+  #end
 
   def set_item
     @item = Item.find(params[:item_id])
