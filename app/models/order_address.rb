@@ -1,6 +1,6 @@
 class OrderAddress
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :city, :address1, :address2, :phone
+  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :city, :address1, :address2, :phone, :token
 
   with_options presence: true do
     validates :user_id
@@ -18,6 +18,6 @@ class OrderAddress
       order = Order.create(user_id: user_id, item_id: item_id)
       
       # 住所を保存する
-      Address.create(postal_code: postal_code, prefecture: prefecture, city: city, address1: address1, address2: address2, order_id: order.id)
+      Address.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, address1: address1, address2: address2, phone: phone, order_id: order.id)
     end
 end
