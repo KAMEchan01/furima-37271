@@ -31,10 +31,6 @@ class OrdersController < ApplicationController
     params.require(:order_address).permit(:postal_code, :prefecture_id, :city, :address1, :address2, :phone).merge(user_id: current_user.id, item_id: params[:item_id],token: params[:token])
   end
 
-  #def address_params
-   # params.permit(:postal_code, :prefecture, :city, :address1, :address2, :phone ).merge(doder_id: @order.id)
-  #end
-
   def set_item
     @item = Item.find(params[:item_id])
   end
@@ -44,7 +40,7 @@ class OrdersController < ApplicationController
   Payjp::Charge.create(
     amount: @item.price,  
     card: order_params[:token],   
-    currency: 'jpy'                 # 通貨の種類（日本円）
+    currency: 'jpy'              
   )
   end
 
