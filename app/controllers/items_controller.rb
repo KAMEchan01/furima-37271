@@ -20,9 +20,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def edit
     if @item.user_id == current_user.id && @item.order.nil?
     else
@@ -39,6 +36,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+  end
+
+  
   def destroy
     if @item.user_id == current_user.id
       @item.destroy
