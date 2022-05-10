@@ -19,7 +19,7 @@
 - has_many :orders
 - has_many :comments
 
-##  ShippingAddresses
+##  Addresses
 
 | Column        | Type       | Options                        |
 |---------------|------------|--------------------------------|
