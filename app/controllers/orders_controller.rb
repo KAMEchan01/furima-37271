@@ -3,6 +3,9 @@ class OrdersController < ApplicationController
 
   before_action :set_item, only: [:index, :create]
 
+  before_action :order
+  
+
   def index
     @order_address = OrderAddress.new
     if @item.order.nil?
@@ -42,4 +45,12 @@ class OrdersController < ApplicationController
       currency: 'jpy'
     )
   end
+
+  def order
+    if @item.user_id == current_user.id || @item.order
+      redirect_to root_path
+    end
+  end
+
 end
+
