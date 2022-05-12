@@ -24,8 +24,6 @@ class ItemsController < ApplicationController
     end
   end
 
- 
-
   def update
     @item.update(item_params)
     if @item.valid?
@@ -34,8 +32,6 @@ class ItemsController < ApplicationController
       render 'edit'
     end
   end
-
-
 
   def show
   end
